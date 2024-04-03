@@ -28,9 +28,9 @@ int main(int argc, char *argv[]) {
         fclose(file);
     } else if (argc == 1) {
         /* Input two unsigned integers */
-        printf("Enter the first number (unsigned integer):\n");
+        printf("Enter the first unsigned integer:\n");
         scanf("%u", &a);
-        printf("Enter the second number (unsigned integer):\n");
+        printf("Enter the second unsigned integer:\n");
         scanf("%u", &b);
     } else {
         /* Incorrect usage */
