@@ -8,36 +8,27 @@ void display_binary(unsigned int num);
 int main(int argc, char *argv[]) {
     unsigned int a, b, sum;
 
-    /* Check if a filename is provided as a command-line argument */
+    /* Check if a filename is provided*/
     if (argc == 3) {
         /* Open the file for reading */
         FILE *file = fopen(argv[1], "r");
-        if (file == NULL) {
-            printf("Error: Could not open file '%s'\n", argv[1]);
-            return 1;
-        }
-
         /* Read the two unsigned integers from the file */
         if (fscanf(file, "%u %u", &a, &b) != 2) {
             printf("Error: Invalid content in file '%s'\n", argv[1]);
             fclose(file);
             return 1;
         }
-
-        /* Close the file */
         fclose(file);
-    } else if (argc == 1) {
+
+    } 
+    
+    else {/* if a file was not given */
         /* Input two unsigned integers */
         printf("Enter the first unsigned integer:\n");
         scanf("%u", &a);
         printf("Enter the second unsigned integer:\n");
         scanf("%u", &b);
-    } else {
-        /* Incorrect usage */
-        printf("Usage: %s [filename]\n", argv[0]);
-        printf("   or: %s\n", argv[0]);
-        return 1;
-    }
+    } 
 
     /* Display binary representation of a and b */
     printf("\nBinary representation of %u: ", a);
