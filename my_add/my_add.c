@@ -5,30 +5,13 @@
 unsigned int my_add(unsigned int a, unsigned int b);
 void display_binary(unsigned int num);
 
-int main(int argc, char *argv[]) {
+int main() {
     unsigned int a, b, sum;
 
-    /* Check if a filename is provided*/
-    if (argc == 3) {
-        /* Open the file for reading */
-        FILE *file = fopen(argv[1], "r");
-        /* Read the two unsigned integers from the file */
-        if (fscanf(file, "%u %u", &a, &b) != 2) {
-            printf("Error: Invalid content in file '%s'\n", argv[1]);
-            fclose(file);
-            return 1;
-        }
-        fclose(file);
-
-    } 
-    
-    else {/* if a file was not given */
-        /* Input two unsigned integers */
-        printf("Enter the first unsigned integer:\n");
-        scanf("%u", &a);
-        printf("Enter the second unsigned integer:\n");
-        scanf("%u", &b);
-    } 
+    printf("Enter the first unsigned integer:\n");
+    scanf("%u", &a);
+    printf("Enter the second unsigned integer:\n");
+    scanf("%u", &b);
 
     /* Display binary representation of a and b */
     printf("\nBinary representation of %u: ", a);
@@ -39,7 +22,7 @@ int main(int argc, char *argv[]) {
     /* Perform binary addition using my_add function */
     sum = my_add(a, b);
 
-    /* Display binary representation of sum */
+    /* Display sum in binary */
     printf("\n\nBinary representation of sum: ");
     display_binary(sum);
 
@@ -51,9 +34,9 @@ int main(int argc, char *argv[]) {
 
 /* Function to add two unsigned integers in binary representation */
 unsigned int my_add(unsigned int a, unsigned int b) {
-    unsigned int result = 0; /* Initialize result */
-    unsigned int carry = 0; /* Initialize carry */
-    unsigned int mask = 1; /* Initialize mask */
+    unsigned int result = 0; 
+    unsigned int carry = 0; 
+    unsigned int mask = 1; 
 
     while (a || b || carry) {
         /* Extract the least significant bits of a, b, and carry */
@@ -64,7 +47,7 @@ unsigned int my_add(unsigned int a, unsigned int b) {
         unsigned int sum = bit_a ^ bit_b ^ carry;
 
         /* Update result using sum */
-        result |= (sum * mask); /* Multiply the sum by the current mask value */
+        result |= (sum * mask); 
 
         /* Calculate carry */
         carry = (bit_a & bit_b) | ((bit_a ^ bit_b) & carry);
@@ -82,7 +65,7 @@ unsigned int my_add(unsigned int a, unsigned int b) {
 
 /* Function to display an unsigned integer in binary */
 void display_binary(unsigned int num) {
-    unsigned int mask = 1 << (sizeof(unsigned int) * 8 - 1); /* Initialize mask for the most significant bit */
+    unsigned int mask = 1 << (sizeof(unsigned int) * 8 - 1); 
     int i;
     for (i = 0; i < sizeof(unsigned int) * 8; ++i) {
         if (num & mask)

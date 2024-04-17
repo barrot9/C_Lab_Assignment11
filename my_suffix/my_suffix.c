@@ -11,10 +11,10 @@ int main() {
     char c; 
     int numSuffixes; 
     
-    printf("Enter a string: ");
+    printf("Enter a string: \n");
     scanf("%s", str);
     
-    printf("Enter a character: ");
+    printf("Enter a character: \n");
     scanf(" %c", &c);
     
     numSuffixes = my_suffix(str, c);
